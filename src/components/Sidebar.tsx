@@ -1,34 +1,62 @@
 // src/components/Sidebar.tsx
 import React, { useState } from "react";
-import { Box, List, ListItemButton, ListItemIcon, ListItemText, Tooltip, Divider, Typography,  } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Tooltip,
+  Divider,
+  Typography,
+} from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import MenuIcon from "@mui/icons-material/Menu";
-import {  useAppSelector } from "../hooks"; 
-// import { toggleSidebar, } from "../store/uiSlice";
+import { useAppSelector } from "../hooks";
 import { useNavigate } from "react-router-dom";
 
 const collapsedWidth = 64;
 const expandedWidth = 240;
 
-const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
-  { key: "employee_Management", label: "Employee Management", icon: <DashboardIcon />, path: "/employee_Management" },
+const ALL_NAV_ITEMS = [
+  {
+    key: "dashboard",
+    label: "Dashboard",
+    icon: <DashboardIcon />,
+    path: "/dashboard",
+    roles: ["ADMIN", "EMPLOYEE"],
+  },
+  {
+    key: "article",
+    label: "Article",
+    icon: <DashboardIcon />,
+    path: "/article",
+    roles: ["ADMIN", "EMPLOYEE"],
+  },
+  {
+    key: "employee_Management",
+    label: "Employee Management",
+    icon: <DashboardIcon />,
+    path: "/employee_Management",
+    roles: ["ADMIN"],
+  },
 ];
 
 const Sidebar: React.FC = () => {
-  // const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const sidebarExpanded = useAppSelector((s) => s.ui.sidebarExpanded);
-  const [hover, ] = useState(false);
+  const role = useAppSelector((s) => s.auth.user?.role); // 🔑 ROLE FROM AUTH
+  const [hover] = useState(false);
 
   const effectiveExpanded = sidebarExpanded || hover;
+
+  // 🔐 Filter menu by role
+  const navItems = ALL_NAV_ITEMS.filter((item) =>
+    role ? item.roles.includes(role) : false
+  );
 
   return (
     <Box
       component="nav"
-      // onMouseEnter={() => setHover(true)}
-      // onMouseLeave={() => setHover(false)}
       sx={{
         width: effectiveExpanded ? expandedWidth : collapsedWidth,
         transition: "width 200ms ease",
@@ -41,23 +69,19 @@ const Sidebar: React.FC = () => {
         overflowX: "hidden",
       }}
     >
-      <Box display="flex" alignItems="center" justifyContent={effectiveExpanded ? "space-between" : "center"} p={1}>
-        {effectiveExpanded ? (
-          <Typography variant="h6" noWrap>
-            HR Web
-          </Typography>
-        ) :  <Typography variant="h6" noWrap>
-            HR 
-          </Typography> }
-        {/* <IconButton
-          size="small"
-          onClick={() => dispatch(toggleSidebar())}
-          aria-label={sidebarExpanded ? "Collapse sidebar" : "Expand sidebar"}
-        >
-          {sidebarExpanded ? <ChevronLeftIcon /> : <MenuIcon />}
-        </IconButton> */}
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent={effectiveExpanded ? "space-between" : "center"}
+        p={1}
+      >
+        <Typography variant="h6" noWrap>
+          {effectiveExpanded ? "HR Web" : "HR"}
+        </Typography>
       </Box>
+
       <Divider />
+
       <List>
         {navItems.map((item) => {
           const content = (
@@ -71,15 +95,26 @@ const Sidebar: React.FC = () => {
                 justifyContent: effectiveExpanded ? "initial" : "center",
               }}
             >
-              <ListItemIcon sx={{ minWidth: 0, mr: effectiveExpanded ? 2 : 0, justifyContent: "center" }}>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: effectiveExpanded ? 2 : 0,
+                  justifyContent: "center",
+                }}
+              >
                 {item.icon}
               </ListItemIcon>
-              {effectiveExpanded ? <ListItemText primary={item.label} /> : null}
+              {effectiveExpanded && <ListItemText primary={item.label} />}
             </ListItemButton>
           );
 
-          // when collapsed, show tooltip with label on hover
-          return effectiveExpanded ? content : <Tooltip title={item.label} key={item.key} placement="right">{content}</Tooltip>;
+          return effectiveExpanded ? (
+            content
+          ) : (
+            <Tooltip title={item.label} key={item.key} placement="right">
+              {content}
+            </Tooltip>
+          );
         })}
       </List>
     </Box>

@@ -13,3 +13,10 @@ const EmployeeDetails = () => {
 };
 
 export default EmployeeDetails;
+
+// {
+//   "name": "employee1",
+//   "email": "employee1@test.com",
+//   "password": "Emp@123",
+//   "role": "EMPLOYEE"
+// }

@@ -100,3 +100,44 @@ export const {
 
 export default EmployeeSlice.reducer;
 export type { EmployeeState };
+
+
+
+
+// remove 
+
+// ✅ Meaning of !==
+
+//  meansnot equal to !==.
+
+// So:
+
+// 3 !== 3 → false (because they ARE equal)
+
+// 1 !== 3 → true (because they are NOT equal)
+
+// The filter only keeps items where the condition is true.
+// If action.payload.id = 3, then:
+
+// The filter keeps all employees whose id is NOT 3
+
+// The employee whose id is 3 is not kept, so it is removed
+
+// 🧠 1-Line Understanding
+
+// ✔ The filter creates a new list
+// ✔ It keeps only employees whose ID is not the one we want to delete
+// ✔ Because employee 3 is equal, 3 !== 3 becomes false, so it is removed
+
+// 📌 Example
+// ID	Check (id !== 3)	Result
+// 1	1 !== 3 → true	Keep
+// 2	2 !== 3 → true	Keep
+// 3	3 !== 3 → false	❌ Remove
+// 4	4 !== 3 → true	Keep
+// 5	5 !== 3 → true	Keep
+// 🎯 Final Meaning
+
+// ➡️ !== = NOT EQUAL
+// ➡️ Filter keeps only items not equal
+// ➡️ ID 3 does not pass, so it gets removed
