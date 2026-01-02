@@ -17,6 +17,7 @@ export const getAppTheme = (mode: "light" | "dark") =>
             text: { primary: "#e6eef8" },
           }),
     },
+    
     typography: {
       fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       h1: { fontSize: "2rem", fontWeight: 700 },

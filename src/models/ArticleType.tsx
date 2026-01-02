@@ -5,3 +5,6 @@ export interface ArticleType {
   description?: string;
   authorId: number;
 }
+
+
+
