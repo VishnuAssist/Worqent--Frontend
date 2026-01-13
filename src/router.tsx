@@ -76,6 +76,7 @@ import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard";
 import Article from "./pages/Article";
 import Employee_Management from "./pages/Employee_Management";
+import Dictionary from "./pages/Dictionary";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthLayout from "./Layout/AuthLayout";
 import AppLayout from "./Layout/AppLayout";
@@ -104,6 +105,10 @@ const Router = () => {
         <Route
           path="/employee_Management"
           element={<Employee_Management />}
+        />
+        <Route
+          path="/dictionary"
+          element={<Dictionary />}
         />
       </Route>
     </Routes>

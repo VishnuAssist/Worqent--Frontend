@@ -1,4 +1,5 @@
-import { Card, Typography, SxProps, Theme } from "@mui/material";
+import { Card, Typography,} from "@mui/material";
+import type {  SxProps, Theme } from "@mui/material";
 
 interface NoDataCardProps {
   text?: string;

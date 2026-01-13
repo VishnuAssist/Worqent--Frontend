@@ -48,6 +48,13 @@ const NAV_ITEMS = [
     path: "/employee_Management",
     roles: ["ADMIN"],
   },
+  {
+    key: "dictionary",
+    label: "Dictionary",
+    icon: <PeopleIcon />,
+    path: "/dictionary",
+    roles: ["ADMIN"],
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -99,10 +106,10 @@ const Sidebar: React.FC = () => {
           sidebarExpanded || isTablet ? "space-between" : "center"
         }
         px={2}
-        py={1.5}
+        py={1.5} pb={2.5}
       >
         <Typography variant="h6" noWrap>
-          {sidebarExpanded || isTablet ? "HR Web" : "HR"}
+          {sidebarExpanded || isTablet ? "Worqent" : "WQ"}
         </Typography>
       </Box>
 

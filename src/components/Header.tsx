@@ -49,7 +49,7 @@ const Header: React.FC = () => {
               </IconButton>
             </Tooltip>
           </Box>
-          <Box display="flex" alignItems="center" gap={1}>
+          {/* <Box display="flex" alignItems="center" gap={1}>
             <Avatar alt="Dummy User" sx={{ width: 36, height: 36 }}>
               V
             </Avatar>
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             >
               Vishnupriyan
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
       </Toolbar>
     </AppBar>
