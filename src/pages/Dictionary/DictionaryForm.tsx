@@ -60,7 +60,7 @@ const DictionaryForm: FC<Props> = ({ form, closeForm, initialData }) => {
               <CustomInput label="Description" name="description" register={register} />
             </Grid>
             <Grid size={{ xs: 12, md: 12}}>
-              <FormControl fullWidth size="small">
+              <FormControl fullWidth size="medium">
                 <InputLabel>Category</InputLabel>
                 <Select
                   value={watch("category") || ""}

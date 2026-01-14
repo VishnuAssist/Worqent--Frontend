@@ -76,6 +76,7 @@ import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard";
 import Article from "./pages/Article";
 import Employee_Management from "./pages/Employee_Management";
+import Leave from "./pages/LeaveManagement";
 import Dictionary from "./pages/Dictionary";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthLayout from "./Layout/AuthLayout";
@@ -105,6 +106,10 @@ const Router = () => {
         <Route
           path="/employee_Management"
           element={<Employee_Management />}
+        />
+        <Route
+          path="/leave"
+          element={<Leave />}
         />
         <Route
           path="/dictionary"

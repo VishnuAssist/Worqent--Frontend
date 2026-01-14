@@ -11,8 +11,10 @@ import {
   Typography,
 } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ArticleIcon from "@mui/icons-material/Article";
+// import ArticleIcon from "@mui/icons-material/Article";
 import PeopleIcon from "@mui/icons-material/People";
+import LuggageIcon from '@mui/icons-material/Luggage';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 
@@ -34,12 +36,19 @@ const NAV_ITEMS = [
     path: "/dashboard",
     roles: ["ADMIN", "EMPLOYEE"],
   },
-  {
-    key: "article",
-    label: "Article",
-    icon: <ArticleIcon />,
-    path: "/article",
-    roles: ["ADMIN", "EMPLOYEE"],
+  // {
+  //   key: "article",
+  //   label: "Article",
+  //   icon: <ArticleIcon />,
+  //   path: "/article",
+  //   roles: ["ADMIN", "EMPLOYEE"],
+  // },
+    {
+    key: "leave",
+    label: "Leave",
+    icon: <LuggageIcon />,
+    path: "/leave",
+    roles: ["ADMIN"],
   },
   {
     key: "employee_Management",
@@ -51,10 +60,11 @@ const NAV_ITEMS = [
   {
     key: "dictionary",
     label: "Dictionary",
-    icon: <PeopleIcon />,
+    icon: <LibraryBooksIcon />,
     path: "/dictionary",
     roles: ["ADMIN"],
   },
+
 ];
 
 /* ------------------------------------------------------------------ */
